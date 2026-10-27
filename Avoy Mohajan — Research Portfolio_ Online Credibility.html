@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avoy Mohajan — Research Portfolio: Online Credibility</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3efe6; --paper:#fbf9f3; --ink:#1b1a17; --muted:#68625a; --rule:#d6cfbf;
+  --pen:#b82a22; --pen-ink:#fff; --hl:#ffe46b; --hl-ink:#1b1a17; --ok:#2d6a4f;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#141311;--paper:#1c1a17;--ink:#ece7dc;--muted:#a49d8f;--rule:#38342d;--pen:#ef6a5f;--pen-ink:#141311;--hl:#6b5a14;--hl-ink:#fbf1c4;--ok:#6fcf9b;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#141311;--paper:#1c1a17;--ink:#ece7dc;--muted:#a49d8f;--rule:#38342d;--pen:#ef6a5f;--pen-ink:#141311;--hl:#6b5a14;--hl-ink:#fbf1c4;--ok:#6fcf9b;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 48px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:var(--pen);text-underline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:2px solid var(--ink);z-index:5}
+nav .wrap{display:flex;gap:20px;overflow-x:auto;padding:12px 24px;font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--pen)}
+.mast{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);padding:14px 0}
+.hero{padding:56px 0 52px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pen);margin:0 0 14px}
+h1{font-size:clamp(46px,9vw,84px);line-height:1;margin:0 0 28px;font-weight:700;letter-spacing:-.025em}
+.claim{font-size:clamp(24px,3.6vw,34px);line-height:1.4;font-style:italic;max-width:780px;margin:0 0 14px}
+mark{background:linear-gradient(transparent 12%,var(--hl) 12%);color:inherit;padding:0 2px}
+mark.pen{background:none;color:inherit;border-bottom:2px solid var(--pen)}
+.claim sup{font-family:var(--mono);font-style:normal;font-size:11px;color:var(--pen);font-weight:500;margin-left:3px}
+.notes{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:0 0 28px;display:flex;flex-wrap:wrap;gap:6px 22px}
+.notes b{color:var(--pen);font-weight:500}
+.lede{max-width:680px;margin:0 0 24px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--mono);font-size:13px;padding:9px 14px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;display:inline-block;background:none;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--pen);border-color:var(--pen);color:var(--pen-ink)}
+.btn.primary:hover{opacity:.88}
+section{padding:46px 0;border-top:1px solid var(--rule)}
+h2{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 24px}
+h2 span{color:var(--pen);margin-right:10px}
+h3{font-size:22px;margin:0;font-weight:600;line-height:1.3}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;padding:0;list-style:none}
+.tags li{border:1px solid var(--rule);background:var(--paper);padding:8px 14px}
+.intro{max-width:700px;margin:0 0 28px}
+/* flip cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{perspective:1200px;display:grid}
+.inner{display:grid;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,.7,.2,1)}
+.card.flipped .inner{transform:rotateY(180deg)}
+.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1.5px solid var(--ink);background:var(--paper);min-height:300px}
+.front{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:22px;font:inherit;color:inherit;text-align:left;cursor:pointer;transition:visibility 0s .3s}
+.front:hover{border-color:var(--pen)}
+.front .q{font-size:92px;font-weight:700;line-height:.9;letter-spacing:-.03em}
+.front .q i{color:var(--pen);font-style:normal}
+.front .topic{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.front .hint{font-family:var(--mono);font-size:12px;color:var(--pen);border-bottom:1px dashed var(--pen)}
+.back{transform:rotateY(180deg);padding:22px;display:flex;flex-direction:column;gap:14px;visibility:hidden;transition:visibility 0s .3s;border-color:var(--pen)}
+.card.flipped .back{visibility:visible;transition-delay:.3s}
+.card.flipped .front{visibility:hidden}
+.card.flipped .front{transition-delay:.3s}
+.back .tag{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--pen);display:flex;justify-content:space-between;align-items:center}
+.back .tag button{font-family:var(--mono);font-size:12px;background:none;border:0;color:var(--muted);cursor:pointer;text-decoration:underline;padding:4px}
+.back .qtext{font-size:20px;line-height:1.35;font-weight:600;margin:0}
+.plus{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;font:inherit;font-family:var(--mono);font-size:13px;color:var(--ink);cursor:pointer;text-align:left}
+.plus .ico{width:30px;height:30px;border:1.5px solid var(--pen);color:var(--pen);display:inline-flex;align-items:center;justify-content:center;font-size:20px;line-height:1;flex:none;transition:transform .25s,background .2s}
+.plus[aria-expanded="true"] .ico{transform:rotate(45deg);background:var(--pen);color:var(--pen-ink)}
+.plus:hover .ico{background:var(--pen);color:var(--pen-ink)}
+.desc{margin:0;font-size:16px;line-height:1.55;border-top:1px dashed var(--rule);padding-top:12px}
+.desc[hidden]{display:none}
+.desc b{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pen);display:block;margin-bottom:4px;font-weight:500}
+/* approach */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0;padding:0;list-style:none}
+.steps li{border-top:3px solid var(--ink);padding-top:12px}
+.steps .n{font-family:var(--mono);font-size:12px;color:var(--pen)}
+.steps p{margin:6px 0 0;font-size:16.5px}
+.note{margin-top:28px;padding:16px 20px;border:1px dashed var(--pen);background:var(--paper);font-size:16.5px}
+.note b{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--pen);display:block;margin-bottom:4px;font-weight:500}
+.pub{background:var(--paper);border:1px solid var(--rule);border-left:4px solid var(--pen);padding:24px 26px}
+.pub .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.pub h3{font-size:23px;margin-bottom:10px}.pub p{margin:0 0 14px}
+.entry{display:grid;grid-template-columns:150px 1fr;gap:8px 28px;padding:0 0 28px}
+.entry:last-child{padding-bottom:0}
+.when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:6px}
+.org{color:var(--muted);margin:2px 0 10px;font-style:italic}
+.entry ul{margin:0;padding-left:20px}.entry li{margin-bottom:6px}
+.sub{margin:40px 0 20px}
+.skills{display:grid;grid-template-columns:170px 1fr;gap:12px 28px;margin:0}
+.skills dt{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:5px}.skills dd{margin:0}
+.contact p{margin:0 0 6px}
+footer{border-top:2px solid var(--ink);padding:24px 0 40px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (max-width:760px){
+  body{font-size:17px}
+  .cards,.steps{grid-template-columns:1fr}
+  .entry,.skills{grid-template-columns:1fr}.when,.skills dt{padding-top:0}
+  .hero{padding:40px 0 36px}
+}
+@media (prefers-reduced-motion:reduce){.inner,.plus .ico{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a href="#about">About</a><a href="#interests">Interests</a><a href="#questions">Questions</a><a href="#approach">Approach</a><a href="#publication">Publication</a><a href="#research">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+</div></nav>
+
+<main class="wrap">
+  <div class="mast"><span>Research portfolio</span><span>Prospective PhD · Information Systems · Fall 2027</span></div>
+  <header class="hero" id="about">
+    <p class="eyebrow">Avoy Mohajan</p>
+    <h1>Judging what we read online.</h1>
+    <p class="claim">I want to understand what makes online information <mark>convincing</mark><sup>[1]</sup>, and what happens when that confidence is misplaced.</p>
+    <p class="notes"><span><b>[1]</b> convincing writing does not establish truth</span><span><b>[2]</b> an unusual account is not necessarily dishonest</span></p>
+    <p class="lede">Computer science graduate (M.S., Oklahoma State University) with a first-author peer-reviewed publication and experience in prototype development, simulation, and experimental evaluation. I’m moving toward misinformation and online credibility: a new research focus, pursued deliberately.</p>
+    <div class="links">
+      <a class="btn primary" href="#questions">Explore my research questions ↓</a>
+      <a class="btn" href="https://doi.org/10.3390/electronics14061095" target="_blank" rel="noopener">Published paper</a>
+      <a class="btn" href="http://linkedin.com/in/avoymohajan" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:avoy.mohajan@okstate.edu">Email</a>
+    </div>
+  </header>
+
+  <section id="interests">
+    <h2><span>01</span>Intended Research Interests</h2>
+    <ul class="tags">
+      <li>Misinformation detection</li>
+      <li>Fake news vs. satire: linguistic distinctions</li>
+      <li>Suspicious online reviews</li>
+      <li>Credibility warnings and user judgments</li>
+    </ul>
+    <p class="intro">I’m interested in developing expertise in text analytics, machine learning, and behavioral research methods, so that computational detection and human judgment can be studied together.</p>
+  </section>
+
+  <section id="questions">
+    <h2><span>02</span>Research Questions</h2>
+    <p class="intro">Three questions form my initial agenda. Tap a card to turn it over, then use <strong>+</strong> to see what I want to solve.</p>
+    <div class="cards">
+
+      <div class="card" id="c1"><div class="inner">
+        <button class="front face" type="button" aria-label="Flip card Q1: linguistic cues">
+          <span class="topic">Linguistic cues</span><span class="q">Q<i>1</i></span><span class="hint">tap to flip →</span>
+        </button>
+        <div class="back face">
+          <div class="tag"><span>Question 1</span><button type="button" class="unflip">↺ back</button></div>
+          <p class="qtext">When do linguistic cues help distinguish false news from satire and legitimate reporting, and when do they become misleading?</p>
+          <button class="plus" type="button" aria-expanded="false" aria-controls="d1"><span class="ico">+</span><span>What I want to solve</span></button>
+          <p class="desc" id="d1" hidden><b>The goal</b>Find out whether a model learns useful distinctions or leans on a publisher, topic, or writing style. I’d compare interpretable linguistic features with text-representation models, test on publishers and topics held out of training, and look closely at satire labeled as false news and legitimate reporting flagged for emotional language. The aim: clarify when linguistic evidence supports a label, and when a system should express uncertainty instead.</p>
+        </div>
+      </div></div>
+
+      <div class="card" id="c2"><div class="inner">
+        <button class="front face" type="button" aria-label="Flip card Q2: suspicious reviews">
+          <span class="topic">Suspicious reviews</span><span class="q">Q<i>2</i></span><span class="hint">tap to flip →</span>
+        </button>
+        <div class="back face">
+          <div class="tag"><span>Question 2</span><button type="button" class="unflip">↺ back</button></div>
+          <p class="qtext">How can suspicious review activity be identified when there are too few verified examples of manipulation to train a dependable classifier?</p>
+          <button class="plus" type="button" aria-expanded="false" aria-controls="d2"><span class="ico">+</span><span>What I want to solve</span></button>
+          <p class="desc" id="d2" hidden><b>The goal</b>Start in a bounded setting, such as reviews of one category of health-related apps. Examine repeated language, timing, rating patterns, and reviewer–app relationships where data are legitimately available, and compare text-only methods with behavioral or network signals. Similarity alone is not deception, so evaluation needs documented annotation, independent judgments, and explicit handling of uncertain cases. The aim: flag activity that warrants investigation without claiming it proves fraud.</p>
+        </div>
+      </div></div>
+
+      <div class="card" id="c3"><div class="inner">
+        <button class="front face" type="button" aria-label="Flip card Q3: credibility warnings">
+          <span class="topic">Credibility warnings</span><span class="q">Q<i>3</i></span><span class="hint">tap to flip →</span>
+        </button>
+        <div class="back face">
+          <div class="tag"><span>Question 3</span><button type="button" class="unflip">↺ back</button></div>
+          <p class="qtext">How should a platform explain a credibility warning so that people understand the evidence without treating it as a final verdict?</p>
+          <button class="plus" type="button" aria-expanded="false" aria-controls="d3"><span class="ico">+</span><span>What I want to solve</span></button>
+          <p class="desc" id="d3" hidden><b>The goal</b>With appropriate training and ethics approval, run a controlled study comparing a simple warning, an evidence-based explanation, and no warning, using content whose status is independently established. That lets me evaluate participants’ actual judgments, including mistaken rejection of legitimate content and acceptance of misleading content. The aim: learn whether explanations improve appropriate reliance on a system, including noticing its mistakes.</p>
+        </div>
+      </div></div>
+
+    </div>
+    <div class="note"><b>A note on scope</b>These questions are an initial agenda, not a claim that I’ve found unexplored gaps. I’d review the literature in depth first and refine a feasible starting problem with an advisor, narrowing or reconsidering a question as the evidence calls for.</div>
+  </section>
+
+  <section id="approach">
+    <h2><span>03</span>How the Questions Fit Together</h2>
+    <ol class="steps">
+      <li><span class="n">STEP 01 · Q1 + Q2</span><h3>What evidence can a system offer?</h3><p>Study the linguistic and review-activity signals that are genuinely informative, and where they mislead.</p></li>
+      <li><span class="n">STEP 02 · Q3</span><h3>How is that evidence understood?</h3><p>Test how people interpret explanations and warnings, measuring judgments rather than only stated helpfulness.</p></li>
+      <li><span class="n">THROUGHOUT</span><h3>Honest about uncertainty</h3><p>Prefer flagging for further investigation over confident verdicts, and document every annotation and experiment.</p></li>
+    </ol>
+    <div class="note"><b>Where I’m starting from</b>I have not yet conducted research in misinformation or text analytics. I bring prototype development, evaluation, scientific writing, and repeatable documented workflows in Python, Java, and C. I would strengthen natural language processing, machine learning, statistics, information-systems theory, and responsible human-participant research.</div>
+  </section>
+
+  <section id="publication">
+    <h2><span>04</span>Peer-Reviewed Publication</h2>
+    <article class="pub">
+      <p class="meta">Electronics, 2025, 14(6), 1095 · First author</p>
+      <h3>Embedding Security Awareness into a Blockchain-Based Dynamic Access Control Framework for the Zero Trust Model in Distributed Systems</h3>
+      <p>Mohajan, A., &amp; Jahan, S.</p>
+      <p>Prior work in a different area, and the foundation for my research practice: problem formulation, prototype implementation, experimental evaluation, and manuscript preparation.</p>
+      <a class="btn primary" href="https://doi.org/10.3390/electronics14061095" target="_blank" rel="noopener">Full text (PDF) · DOI</a>
+    </article>
+  </section>
+
+  <section id="research">
+    <h2><span>05</span>Research Experience &amp; Education</h2>
+    <div class="entry">
+      <div class="when">Jan 2024 – May 2025</div>
+      <div>
+        <h3>Graduate Research Assistant</h3>
+        <p class="org">Oklahoma State University, Stillwater, OK · Advisor: Dr. Sharmin Jahan</p>
+        <ul>
+          <li>Developed a blockchain-based dynamic access-control framework incorporating trust metrics and contextual risk assessment into smart contracts for zero-trust distributed systems.</li>
+          <li>Built simulations and implemented prototypes in an Ethereum testing environment using Remix IDE to examine access decisions and changes in participant behavior.</li>
+          <li>Evaluated transaction validation time and gas consumption to assess the operational costs of the proposed framework.</li>
+          <li>Contributed to research design, implementation, validation, and manuscript preparation, resulting in a first-author journal publication.</li>
+          <li>Examined framework limitations, including the selection of trust thresholds and coordination of trust updates, to identify directions for further investigation.</li>
+        </ul>
+      </div>
+    </div>
+    <h2 class="sub">Education</h2>
+    <div class="entry">
+      <div class="when">May 2025</div>
+      <div>
+        <h3>M.S. in Computer Science</h3>
+        <p class="org">Oklahoma State University, Stillwater, OK · GPA 3.2/4.0 · Research advisor: Dr. Sharmin Jahan</p>
+        <p style="margin:0;font-size:16px"><b>Selected graduate coursework:</b> Data Structures and Algorithms II; Cloud &amp; Distributed Systems (A); Design and Implementation of Operating Systems II (A); Network Security and Defense (A); Introduction to Computer Security; Computer Organization and Architecture.</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when">Jul 2020</div>
+      <div><h3>B.Tech. in Information Technology</h3><p class="org">Future Institute of Engineering and Management, Kolkata, India · CGPA 8.22/10.0</p></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2><span>06</span>Technical &amp; Research Skills</h2>
+    <dl class="skills">
+      <dt>Research methods</dt><dd>Literature review, research problem formulation, simulation, prototype development, experimental validation, performance evaluation, scientific writing</dd>
+      <dt>Data &amp; analysis</dt><dd>SQL querying, database troubleshooting, log analysis, performance measurements, interpretation of experimental results</dd>
+      <dt>Programming</dt><dd>Python, Java, C, Bash, PowerShell, SQL</dd>
+      <dt>Computing platforms</dt><dd>Linux, UNIX, Windows Server, Docker, Kubernetes, AWS, Azure, GCP, VMware; Git, CI/CD, Terraform, Ansible</dd>
+      <dt>Monitoring &amp; diagnostics</dt><dd>Splunk, Dynatrace, Grafana, Zabbix; system diagnostics, root cause analysis, technical documentation</dd>
+      <dt>Databases</dt><dd>Oracle, Microsoft SQL Server, PostgreSQL, MySQL; SQLite in academic project work</dd>
+    </dl>
+  </section>
+
+  <section id="experience">
+    <h2><span>07</span>Relevant Professional Experience</h2>
+    <div class="entry">
+      <div class="when">Jun 2026 – Present</div>
+      <div><h3>Systems Engineer</h3><p class="org">Uplink Works, LLC, Dover, DE</p>
+        <ul>
+          <li>Maintain server, storage, and network infrastructure; analyze performance and capacity to identify reliability and scalability improvements.</li>
+          <li>Automate administration and support patching, access controls, backups, and disaster recovery procedures; investigate infrastructure incidents and document findings.</li>
+        </ul></div>
+    </div>
+    <div class="entry">
+      <div class="when">Nov 2025 – Jun 2026</div>
+      <div><h3>Systems Engineer Intern</h3><p class="org">IpserLabs LLC, Fort Worth, TX</p>
+        <ul>
+          <li>Managed Linux infrastructure and supported Docker and Kubernetes environments, including deployment configuration and troubleshooting service disruptions.</li>
+          <li>Developed Python and Bash automation for infrastructure operations; improved monitoring and alerting and performed root cause analysis.</li>
+          <li>Documented system configurations, troubleshooting procedures, and operational findings in engineering runbooks; applied access controls and secure configurations.</li>
+        </ul></div>
+    </div>
+    <div class="entry">
+      <div class="when">Nov 2020 – Aug 2023</div>
+      <div><h3>System Engineer</h3><p class="org">Tata Consultancy Services, Kolkata, India</p>
+        <ul>
+          <li>Supported production infrastructure serving 400+ enterprise applications for TD Bank and Los Angeles Times in 24/7 operational environments.</li>
+          <li>Contributed to remediation of 65,000+ vulnerabilities through patching and hardening, working with technical teams across Linux and Windows environments.</li>
+          <li>Supported migration of 400+ virtual machines from VMware to Microsoft Azure; automated patching, provisioning, and monitoring using Python, Bash, and PowerShell.</li>
+          <li>Investigated application, infrastructure, and network incidents using logs, system diagnostics, and monitoring tools; collaborated with developers and database and network teams.</li>
+        </ul></div>
+    </div>
+    <h2 class="sub">Selected Academic Projects</h2>
+    <div class="entry"><div class="when">May 2020</div><div><h3>Insurance Management System</h3><p class="org" style="margin:0">ASP.NET and Oracle application for policy, claims, and customer data management.</p></div></div>
+    <div class="entry"><div class="when">Jul 2019</div><div><h3>Library Management System</h3><p class="org" style="margin:0">Java and SQLite application for cataloging, issuing, and maintaining library records.</p></div></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2><span>08</span>Contact</h2>
+    <p><a href="mailto:avoy.mohajan@okstate.edu">avoy.mohajan@okstate.edu</a></p>
+    <p><a href="tel:+14052692384">(405) 269-2384</a></p>
+    <p><a href="http://linkedin.com/in/avoymohajan" target="_blank" rel="noopener">linkedin.com/in/avoymohajan</a></p>
+    <p><a href="https://avoyresearch.netlify.app/" target="_blank" rel="noopener">avoyresearch.netlify.app</a> (website)</p>
+    <p style="color:var(--muted)">Lansdale, PA</p>
+  </section>
+</main>
+<footer><div class="wrap">© Avoy Mohajan · Research portfolio</div></footer>
+
+<script>
+document.querySelectorAll('.card').forEach(function(card){
+  var front=card.querySelector('.front'), back=card.querySelector('.back');
+  var un=card.querySelector('.unflip'), plus=card.querySelector('.plus'), desc=card.querySelector('.desc');
+  function flip(on){
+    card.classList.toggle('flipped',on);
+    setTimeout(function(){(on?un:front).focus({preventScroll:true});},350);
+  }
+  front.addEventListener('click',function(){flip(true)});
+  un.addEventListener('click',function(){flip(false)});
+  plus.addEventListener('click',function(){
+    var open=plus.getAttribute('aria-expanded')==='true';
+    plus.setAttribute('aria-expanded',String(!open));
+    desc.hidden=open;
+  });
+});
+</script>
+</body>
+</html>
